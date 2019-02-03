@@ -16,7 +16,7 @@ void main()
 
 	} while (n > 0);
 	num--;
-	printf("Totla number os values given is %d\n",num);
+	printf("Total number of values given is %d\n",num);
 	printf("Minimum value is %d\n",min);
 	printf("Maximum value is %d\n",max);
 	printf("average is %d",(sum/num));
