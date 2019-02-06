@@ -30,7 +30,7 @@ int invertponwards(int n, int p, int b)
 	}
 	printf("\n");
 	
-	max = p+b;
+	max = p + b;
 	c = p + 1;
 	if (max < i) {
 		while(t<b)
