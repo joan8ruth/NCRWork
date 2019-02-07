@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
+#include<stdlib.h>
 
 void btoh(int n);
 void htob(char* n);
@@ -21,7 +22,7 @@ void main()
 
 	case 2: printf("Enter your Hexa value\n");
 		scanf("%s", hex);
-		
+		//l = strlen(hex);
 		htob(hex);
 		break;
 	}
@@ -67,25 +68,53 @@ void btoh(int num)
 
 void htob(char* hex)
 {
-	int n,i=0,d,r,j=0,y=3;
+	int l,i,d,j=0,x;
 	char c;
-	int **b;
-	n = strlen(hex);
-	//printf("%d",n);
-	while (i < n)
+	int* b;
+	
+	l = strlen(hex);
+	i = 0;
+	b = (int*)malloc(l * 4 * sizeof(int));
+	//int b[l][4];
+	for (j = 0; j <(l*4); j++)
 	{
+		b[j] = 0;
+	}
+	printf("Length is %d\n",b[(l*4)-1]);
+	j = 0;
+	while (i<l)
+	{
+		x = i + 1;
+		j = (4 * x) - 1;
 		c = hex[i];
 		d = (int)c;
-		printf("%d\n", d);
-		i++;
-		if (d > 48 && d < 58)
+		
+		if (d >= 48 && d < 58)
 			d = d - 48;
+		
 		else
-			d = d - 55;
-		while (d > 0) {
+			d = d - 87;
+		printf("Equivalent value of %c is %d\n", c, d);
+		
+		
+			while (d > 0) {
 
-		}
+				b[j] = d % 2;
+				printf("%d", b[j]);
+				d = d / 2;
+				j--;
+			}
+			
+			
+		i++;
+		//j = (4 * i) ;
+		printf("\nNow\n");
+
 	}
+	//printf("%d\n", b[1]);
+		for (j =0; j <(4*l); j++)
+		{
+			printf("%d", b[j]);
+		}
 	
-
 }
