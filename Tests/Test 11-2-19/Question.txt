@@ -1,0 +1,7 @@
+1.develop a menu based c program to perform the following tasks
+ a.count the number of alphabets,digits,spaces and special characters in a file.
+ b. remove all comments from the file content
+ c.find a matching word in the file and rotate the word and place it in the same file
+ d.replace all the tabs present int the file with \t.
+
+Every task in a multiple files.
