@@ -47,6 +47,12 @@ class CollegeCourse
 			
 		}
 
+		~CollegeCourse() {
+			if(name!=NULL)
+
+			free(name);
+		}
+
 };
 
 int main()
