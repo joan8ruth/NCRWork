@@ -57,33 +57,36 @@ public:
 
 	void multiply(matrix a, matrix b)
 	{
-		
-		int sum = 0;
-		rows = a.rows;
-		cols = b.cols;
-		p = new int*[rows];
-		for (int i = 0; i < rows; i++)
+		if (a.cols == b.rows)
 		{
-			*(p + i) = new int[cols];
-		}
-		for (int c = 0; c < a.rows; c++) {
-			for (int d = 0; d < b.cols; d++) {
-				for (int k = 0; k < b.rows; k++) {
-					sum = sum + *(*(a.p + c) + k) * (*(*(b.p + k) + d));
-				}
+			int sum = 0;
+			rows = a.rows;
+			cols = b.cols;
+			p = new int*[rows];
+			for (int i = 0; i < rows; i++)
+			{
+				*(p + i) = new int[cols];
+			}
+			for (int c = 0; c < a.rows; c++) {
+				for (int d = 0; d < b.cols; d++) {
+					for (int k = 0; k < b.rows; k++) {
+						sum = sum + *(*(a.p + c) + k) * (*(*(b.p + k) + d));
+					}
 
-				*(*(p + c) + d) = sum;
-				sum = 0;
+					*(*(p + c) + d) = sum;
+					sum = 0;
+				}
 			}
 		}
-
+		else
+			cout << "Multiplication not possible" << endl;
 	}
 
 };
 
 int main()
 {
-	matrix m1(2, 2), m2(2, 2),m3;
+	matrix m1(2, 3), m2(2, 2),m3;
 	m1.initialize();
 	m2.initialize();
 
