@@ -127,6 +127,11 @@ void _stack_::display()
 	//This method displays all the elements in the stack
 
 	int i;
+	if (isEmpty())
+	{
+		cout << "Stack is empty" << endl;
+
+	}
 
 	for (i = 0; i < sta.top+1; i++)
 	{
