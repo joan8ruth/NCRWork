@@ -37,6 +37,7 @@ int _tmain(int argc,LPTSTR argv[])
 		_tprintf(_T("Text from %s is :\n%S"), argv[1],buffer);
 		return TRUE;
 	}
-
+	CloseHandle(hfile);
+	CloseHandle(hfile2);
 	
 }
