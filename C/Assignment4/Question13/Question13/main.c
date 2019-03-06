@@ -2,10 +2,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 
 int main()
 {
-	int i=0, j=0,length,temporary;
+	int i=0, j=0,length,temporary,flag=0;
 	char string1[20],string2[20];
 	char* stringPtr1=NULL;
 
@@ -26,18 +27,33 @@ int main()
 	else {
 
 		while (i <= length) {
-
+			flag = 0;
 			
-			if ((i + 1) < length && (i + 2) < length && stringPtr1[i + 1] == '-' && stringPtr1[i + 2] == '-') {
-				
-				printf("No to two consecutive hyphens allowed\n");
-				scanf("%d", &i);
-				
-				return 0;
+			if ((i + 1) < length && (i + 2) < length) {
+				flag = 1;
 			}
+				if (flag && stringPtr1[i + 1] == '-' && stringPtr1[i + 2] == '-') {
 
-			
+					printf("No to two consecutive hyphens allowed\n");
+					scanf("%d", &i);
 
+					return 0;
+				}
+				else if (flag && isalpha(stringPtr1[i]) && isdigit(stringPtr1[i + 2])) {
+					printf("Cannot expand alpha to numeral\n");
+					scanf("%d", &i);
+
+					return 0;
+
+				}
+				else if (flag && isdigit(stringPtr1[i]) && isalpha(stringPtr1[i + 2])) {
+					printf("Cannot expand numeral to alpha\n");
+					scanf("%d", &i);
+
+					return 0;
+
+				}
+		
 			else {
 				
 				temporary = stringPtr1[i++];
