@@ -105,7 +105,7 @@ void main() {
 
 	char infix[50], pofx[50];
 	printf("\Enter the calculation expression\n ");
-	fgets(infix, 50, stdin);
+		(infix, 50, stdin);
 
 	//scanf("%s", infix);
 	infix_to_postfix(infix, pofx);

@@ -19,65 +19,86 @@ int main()
 
 	strcpy(stringPtr1, string1);
 	
+	//Checking if hyphens are at the beginning or end
 	if (stringPtr1[0] == '-' || stringPtr1[length- 1] == '-')
 	{
-		printf("Position of hyphen is not valid at beggining and end\n");
+		printf("Position of hyphen is not valid at beginning and end\n");
 	}
 
 	else {
 
 		while (i <= length) {
-			flag = 0;
 			
+			flag = 0;
+
 			if ((i + 1) < length && (i + 2) < length) {
 				flag = 1;
 			}
+
+			/*if (flag && !isalnum(stringPtr1[i]) || !isalnum(stringPtr1[i + 2])) {
+
+				printf("Error: expansion of alphabets and digits only possible\n");
+				scanf("%d", &i);
+				return 0;
+			}*/
+
+				//Checking for consecutive hyphens
 				if (flag && stringPtr1[i + 1] == '-' && stringPtr1[i + 2] == '-') {
 
-					printf("No to two consecutive hyphens allowed\n");
+					printf("Error: No to two consecutive hyphens allowed\n");
+					//getchar();
 					scanf("%d", &i);
 
 					return 0;
 				}
+
+				//Checking if either side of hyphen has an alphabet and digit together
 				else if (flag && isalpha(stringPtr1[i]) && isdigit(stringPtr1[i + 2])) {
-					printf("Cannot expand alpha to numeral\n");
+					printf("Error: Cannot expand alpha to numeral\n");
 					scanf("%d", &i);
 
 					return 0;
 
 				}
+
+				//Checking if either side of hyphen has an alphabet and digit together
 				else if (flag && isdigit(stringPtr1[i]) && isalpha(stringPtr1[i + 2])) {
-					printf("Cannot expand numeral to alpha\n");
+					printf("Error: Cannot expand numeral to alpha\n");
 					scanf("%d", &i);
 
 					return 0;
 
 				}
 		
-			else {
+				//Expansion of shorthand
+				else {
 				
-				temporary = stringPtr1[i++];
+					temporary = stringPtr1[i++];
 
-				if (stringPtr1[i] == '-') {
-					i++;
-					while (temporary < stringPtr1[i])
-						string2[j++] = temporary++;
+					if (stringPtr1[i] == '-') {
+						i++;
+						while (temporary < stringPtr1[i])
+							string2[j++] = temporary++;
+					}
+
+					else
+						string2[j++] = temporary;
 				}
-
-				else
-					string2[j++] = temporary;
-			}
 
 
 		}
 	}
 
+	//Appending null character at end of final expanded string
 	string2[j] = '\0';
-
 
 	printf("%s", string2);
 
-	
+	scanf("%d", &i);
+	return 0;
+}
+
+	//free(stringPtr1);
 	/*else {
 		while (s1[i] != '\0')
 		{
@@ -98,7 +119,4 @@ int main()
 
 	
 	//free(stringPtr1);
-	scanf("%d", &i);
-
-	return 0;
-}
+	

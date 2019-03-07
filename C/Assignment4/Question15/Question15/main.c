@@ -6,7 +6,7 @@ void copyString(char* s1, char* s2);
 int lengthOfString(char* s);
 void reverseString(char* s);
 
-
+//Returns length of string
 int lengthOfString(char* s) {
 	int n=0;
 	
@@ -16,7 +16,7 @@ int lengthOfString(char* s) {
 	return n;
 }
 
-//Reversing string
+//Reversing the string
 void reverseString(char* s)  
 {
 	char temp;
@@ -33,6 +33,8 @@ void reverseString(char* s)
 	}
 }
 
+
+//Used to copy contents from string2 to string1
 void copyString(char* s1,char* s2) {
 
 	int length = lengthOfString(s2);
@@ -42,6 +44,7 @@ void copyString(char* s1,char* s2) {
 	s1[i] = '\0';
 }
 
+//Function to concatenate two strings and return concatenated strings
 char* stringConCat(char* string1, char* string2)
 {
 	char* string = NULL;;
@@ -74,6 +77,7 @@ char* stringConCat(char* string1, char* string2)
 
 }
 
+//Compares two strings, if they are the same return 1 else return 0
 int strComp(char* st1, char* st2)
 {
 	if (lengthOfString(st1) != lengthOfString(st2))
@@ -95,44 +99,53 @@ int strComp(char* st1, char* st2)
 
 int main() {
 
-	char string1[50],string2[50];
-	char* stringPtr1 = NULL,*conCat=NULL;
-	int i, j,length;
+	char string1[20], string2[20], choice;//, string4[20], choice;
+	char* stringPtr1 = NULL,*conCat=NULL,*stringPtr2=NULL;
+	int i, j,length,menu,length2;
 
-	printf("Enter your string\n");
-	scanf("%s", string1);
 
-	length = lengthOfString(string1);
+	
+		do {
+
+			printf("Choose your menu option :1.Reverse 2.Concatenate 3.Compare\n");
+			scanf("%d", &menu);
+			switch (menu) {
+			case 1:printf("Enter the string to reverse\n");
+					scanf("%s",string1);
+					length = lengthOfString(string1);
+					stringPtr1 = (char *)malloc(length * sizeof(char));
+					copyString(stringPtr1, string1);
+					reverseString(stringPtr1);
+					printf("reversed is %s\n", stringPtr1);
+					break;
+			case 2:printf("Enter initial string\n");
+				scanf("%s", string1);
+				printf("Enter second string string\n");
+				scanf("%s", string2);
+				conCat= stringConCat(string1, string2);
+				printf("Concatenated string is %s\n", conCat);
+				break;
+
+			case 3:printf("Enter initial string\n");
+				scanf("%s", string1);
+				printf("Enter second string string\n");
+				scanf("%s", string2);
+				if (strComp(string1, string2)) {
+					printf("%s is equal to %s\n", string1, string2);
+				}
+				else {
+					printf("%s is not equal to %s\n", string1, string2);
+				}
+				break;
+			}
+			printf("do you want to continue y/n?\n");
+			scanf(" %c",&choice);
+
+		} while (choice == 'y' || choice == 'Y');
+
 	
 
-	stringPtr1 = (char *)malloc(length * sizeof(char));
-	copyString(stringPtr1, string1);
-
-	if (stringPtr1 == NULL) {
-		printf("Error:Memory not allocated\n");
-		return 0;
-	}
-
-	else {
-
-		printf("Enter string to concactenate\n");
-		scanf("%s", string2);
-
-		conCat=stringConCat(stringPtr1, string2);
-		printf("After concatenation %s\n", conCat);
-
-		length = lengthOfString(stringPtr1);
-		reverseString(stringPtr1);
-		printf("reversed is %s\n", stringPtr1);
-
-		if (strComp(stringPtr1, conCat)) {
-			printf("%s is equal to %s\n", stringPtr1,conCat);
-		}
-		else {
-			printf("%s is not equal to %s\n", stringPtr1,conCat);
-		}
-	}
-
+	free(stringPtr1);
 	getchar();
-
+	return 0;
 }
