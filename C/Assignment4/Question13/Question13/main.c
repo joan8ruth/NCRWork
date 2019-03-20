@@ -7,7 +7,7 @@
 int main()
 {
 	int i=0, j=0,length,temporary,flag=0;
-	char string1[20],string2[20];
+	char string1[27],string2[50];
 	char* stringPtr1=NULL;
 
 	printf("Enter string\n");
@@ -22,29 +22,29 @@ int main()
 	//Checking if hyphens are at the beginning or end
 	if (stringPtr1[0] == '-' || stringPtr1[length- 1] == '-')
 	{
-		printf("Position of hyphen is not valid at beginning and end\n");
+		printf("Position of hyphen is not valid at beginning or end\n");
+		return -1;
 	}
 
 	else {
 
 		while (i <= length) {
-			
-			flag = 0;
+	
+				flag = 0;
 
-			if ((i + 1) < length && (i + 2) < length) {
-				flag = 1;
-			}
+				if ((i + 1) < length && (i + 2) < length) {
+					flag = 1;
+				}
 
-			/*if (flag && !isalnum(stringPtr1[i]) || !isalnum(stringPtr1[i + 2])) {
-
-				printf("Error: expansion of alphabets and digits only possible\n");
-				scanf("%d", &i);
-				return 0;
-			}*/
+				//Checking  if non alphanumeric on either side of the hyphen
+				if (flag && !isalnum(stringPtr1[i]) && !isalnum(stringPtr1[i+2]) && stringPtr1[i] != '-') {
+					printf("Cannot expand non alphabets and non digits\n");
+					scanf("%d", &i);
+					return 0;
+				}
 
 				//Checking for consecutive hyphens
-				if (flag && stringPtr1[i + 1] == '-' && stringPtr1[i + 2] == '-') {
-
+				else if (flag && stringPtr1[i + 1] == '-' && stringPtr1[i + 2] == '-') {
 					printf("Error: No to two consecutive hyphens allowed\n");
 					//getchar();
 					scanf("%d", &i);
@@ -54,7 +54,7 @@ int main()
 
 				//Checking if either side of hyphen has an alphabet and digit together
 				else if (flag && isalpha(stringPtr1[i]) && isdigit(stringPtr1[i + 2])) {
-					printf("Error: Cannot expand alpha to numeral\n");
+					printf("Error: Cannot expand alpha to digit\n");
 					scanf("%d", &i);
 
 					return 0;
@@ -63,7 +63,16 @@ int main()
 
 				//Checking if either side of hyphen has an alphabet and digit together
 				else if (flag && isdigit(stringPtr1[i]) && isalpha(stringPtr1[i + 2])) {
-					printf("Error: Cannot expand numeral to alpha\n");
+					printf("Error: Cannot expand digit to alpha\n");
+					scanf("%d", &i);
+
+					return 0;
+
+				}
+
+				//Checking if either side of hyphen has a ascii values that are equal or if left is greater than right
+				else if (flag && stringPtr1[i]>=stringPtr1[i + 2]) {
+					printf("Error: Cannot expand \n");
 					scanf("%d", &i);
 
 					return 0;
@@ -85,7 +94,6 @@ int main()
 						string2[j++] = temporary;
 				}
 
-
 		}
 	}
 
@@ -95,6 +103,7 @@ int main()
 	printf("%s", string2);
 
 	scanf("%d", &i);
+	//getchar();
 	return 0;
 }
 

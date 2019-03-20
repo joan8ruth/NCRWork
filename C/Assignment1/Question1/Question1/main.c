@@ -29,7 +29,7 @@ char pop() {
 	return (s[top--]);
 }
 
-
+//This function gives precedence of an operator
 int pr(char elem) {
 	switch (elem) {
 	case '#':
@@ -46,7 +46,7 @@ int pr(char elem) {
 }
 
 void infix_to_postfix(char *infix, char *postfix) {
-	char ch, elem;
+	char ch, elem;//ch is element being inspected, elem is the element popped from stack, s is the stack
 	int i = 0, k = 0;
 
 	push('#');
@@ -76,8 +76,8 @@ void infix_to_postfix(char *infix, char *postfix) {
 
 
 int eval_postfix(char *postfix) {
-	char ch;
-	int i = 0, op1, op2;
+	char ch;             //ch is the element being inspected
+	int i = 0, op1, op2; //op1 and op2 are the two operands to be operated on
 	while ((ch = postfix[i++]) != 0) {
 		if (isdigit(ch))
 			push(ch - '0'); 
@@ -86,6 +86,7 @@ int eval_postfix(char *postfix) {
 		
 			op2 = pop();
 			op1 = pop();
+
 			switch (ch) {
 			case '+': push(op1 + op2);
 				break;
@@ -117,10 +118,6 @@ void main() {
 
 //#include<stdio.h>
 //
-//extern int addition(int a, int b);
-//extern int subtraction(int a, int b);
-//extern int multiplication(int a, int b);
-//extern int division(int a, int b);
 //
 //void main()
 //{

@@ -5,6 +5,8 @@
 void copyString(char* s1, char* s2);
 int lengthOfString(char* s);
 void reverseString(char* s);
+char* stringConCat(char* string1, char* string2);
+int strComp(char* st1, char* st2);
 
 //Returns length of string
 int lengthOfString(char* s) {
@@ -101,15 +103,14 @@ int main() {
 
 	char string1[20], string2[20], choice;//, string4[20], choice;
 	char* stringPtr1 = NULL,*conCat=NULL,*stringPtr2=NULL;
-	int i, j,length,menu,length2;
-
-
+	int i,j,length,menu,length2;
 	
 		do {
 
 			printf("Choose your menu option :1.Reverse 2.Concatenate 3.Compare\n");
 			scanf("%d", &menu);
 			switch (menu) {
+
 			case 1:printf("Enter the string to reverse\n");
 					scanf("%s",string1);
 					length = lengthOfString(string1);
@@ -118,25 +119,27 @@ int main() {
 					reverseString(stringPtr1);
 					printf("reversed is %s\n", stringPtr1);
 					break;
+
 			case 2:printf("Enter initial string\n");
-				scanf("%s", string1);
-				printf("Enter second string string\n");
-				scanf("%s", string2);
-				conCat= stringConCat(string1, string2);
-				printf("Concatenated string is %s\n", conCat);
-				break;
+					scanf("%s", string1);
+					printf("Enter second string string\n");
+					scanf("%s", string2);
+					conCat= stringConCat(string1, string2);
+					printf("Concatenated string is %s\n", conCat);
+					break;
 
 			case 3:printf("Enter initial string\n");
-				scanf("%s", string1);
-				printf("Enter second string string\n");
-				scanf("%s", string2);
-				if (strComp(string1, string2)) {
-					printf("%s is equal to %s\n", string1, string2);
-				}
-				else {
-					printf("%s is not equal to %s\n", string1, string2);
-				}
-				break;
+					scanf("%s", string1);
+					printf("Enter second string string\n");
+					scanf("%s", string2);
+					if (strComp(string1, string2)) {
+						printf("%s is equal to %s\n", string1, string2);
+					}
+					else {
+						printf("%s is not equal to %s\n", string1, string2);
+					}
+					break;
+
 			}
 			printf("do you want to continue y/n?\n");
 			scanf(" %c",&choice);
@@ -145,7 +148,7 @@ int main() {
 
 	
 
-	free(stringPtr1);
+	//free(stringPtr1);
 	getchar();
 	return 0;
 }
