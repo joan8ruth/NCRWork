@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ncrdb" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HP-ENVY-4CFPQ9M\SQLEXPRESS;Initial Catalog=ncrdb;Integrated Security=True" SettingsObjectName="ConsoleApp6.Properties.Settings" SettingsPropertyName="ncrdbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.studentinfo" Member="studentinfos">
+    <Type Name="studentinfo">
+      <Column Name="sid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="snam" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="addr" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -25,7 +25,7 @@ class strings
 		strings(strings &str)
 		{
 			len = str.len;
-			s = new char[len];
+			s = new char[len+1];
 			strcpy(s, str.s);
 		}
 
