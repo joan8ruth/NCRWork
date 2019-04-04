@@ -157,8 +157,8 @@ public partial class _Default : System.Web.UI.Page
             {
                 if (rb.Checked)
                 {
-                    returnValue = GridView1.Rows[i].Cells[1].Text;
-                    return returnValue.Replace("$", "");
+                    
+                    return GridView1.Rows[i].Cells[1].Text;
                 }
             }
         }
@@ -174,7 +174,7 @@ public partial class _Default : System.Web.UI.Page
 
 
         accountNo = Label2.Text;
-        editedAccount.accountNo = Convert.ToInt64(Label2.Text) ;
+       
         editedAccount.customerId = int.Parse(CustomerIdTextBox.Text);
         editedAccount.accountType = AccountTypeTextBox.Text;
         editedAccount.DateOfOpen = DateOfOpeneningTextBox.Text;
@@ -182,7 +182,8 @@ public partial class _Default : System.Web.UI.Page
         editedAccount.dateOfEdited = DateOfEditedTextBox.Text;
         editedAccount.ClosingDate = ClosingDateTextBox.Text;
         editedAccount.amount = int.Parse(AmountTextBox.Text);
-        
+        editedAccount.accountNo = long.Parse(Label2.Text);
+
 
 
 
