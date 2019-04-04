@@ -38,7 +38,7 @@ public partial class _Default : System.Web.UI.Page
 
 
     /*This function takes customer Id entered in the text box and on clicking the button all available accounts for 
-     the corresponding customer Id is displayed by returning a DataSet and filling the GridView*/
+     the corresponding customer Id is displayed by recieving a DataSet and filling the GridView*/
     protected void SubmitButton_Click(object sender, EventArgs e)
     {
 
