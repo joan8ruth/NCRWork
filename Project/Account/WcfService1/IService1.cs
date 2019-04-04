@@ -29,6 +29,9 @@ namespace WcfService1
         [OperationContract]
         bool EditAccount(Account a);
 
+        [OperationContract]
+        bool DeleteAccount(long accountNoToDelete);
+
 
         // TODO: Add your service operations here
     }

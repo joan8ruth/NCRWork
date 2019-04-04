@@ -32,7 +32,7 @@
         
         <asp:Label ID="Label1" runat="server" Text="Customer Id"></asp:Label>
         <asp:TextBox ID="CustomerIdTextBox" runat="server"></asp:TextBox>
-        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="SubmitButton_Click" />
         <br />
         <br />
 
@@ -63,14 +63,18 @@
         <br />
         <br />
 
-        <asp:Button ID="AddButton" runat="server" Text="Add" OnClick="Button2_Click" />
+        <asp:Button ID="AddButton" runat="server" Text="Add" OnClick="AddButton_Click" />
         &nbsp;
         <asp:Button ID="EditButton" runat="server" Text="Edit" OnClick="EditButton_Click" />
         &nbsp;
-        <asp:Button ID="DeleteButton" runat="server" Text="Delete" />
+        <asp:Button ID="DeleteButton" runat="server" Text="Delete" OnClick="DeleteButton_Click" />
+
+        <asp:Button ID="DeleteAccountButton" runat="server" Text="Click to confirm Deletion" OnClick="DeleteAccountButton_Click" />
+        
         <br />
         <br />
 
+        
         <pre>
         <asp:Label ID="AccountTypeLabel" runat="server" Text="Account Type"></asp:Label>
         <asp:TextBox ID="AccountTypeTextBox" runat="server"></asp:TextBox>
@@ -99,16 +103,23 @@
         <asp:Button ID="DetailsSubmitButton" runat="server" Text="Submit Details" OnClick="DetailsSubmitButton_Click" />
        
         
-        
        
+        <asp:Button ID="EditedDetailsSubmitButton" runat="server" Text="Submit Edited Details" OnClick="EditedDetailsSubmitButton_Click" />
         
-        <asp:Button ID="EditedDetailsSubmitButton" runat="server" Text="Submite Edited Details" OnClick="EditedDetailsSubmitButton_Click" />
+        
+        
         
         </pre>
         <pre>
 &nbsp;</pre>
         <pre>
-<asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+
+        
+        </pre>
+        <pre>
+&nbsp;</pre>
+        <pre>
+
         
         <br/>
         </pre>

@@ -32,6 +32,7 @@ namespace WcfService1
             return composite;
         }
 
+        //This returns data set of accounts for the entered customer ID 
         public DataSet GetCustomerId(int customerEnteredId)
         {
             SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
@@ -48,6 +49,7 @@ namespace WcfService1
             
         }
 
+        //This add an account into database
         public bool AddAccount(string[] EnteredDetails)
         {
             SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
@@ -80,6 +82,7 @@ namespace WcfService1
 
         }
 
+        //This updates edited values into database
         public bool EditAccount(Account selectedAccount)
         {
             SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
@@ -96,6 +99,32 @@ namespace WcfService1
             cmd.Parameters.AddWithValue("@dateOfEdited", selectedAccount.dateOfEdited);
             cmd.Parameters.AddWithValue("@ClosingDate", selectedAccount.ClosingDate);
             cmd.Parameters.AddWithValue("@amount", selectedAccount.amount);
+
+            con.Open();
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+        }
+
+        //This deletes row in the database
+        public bool DeleteAccount(long accountNoToDelete)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("deleteDetails", con);
+
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@accountNo", accountNoToDelete);
 
             con.Open();
             int result = cmd.ExecuteNonQuery();

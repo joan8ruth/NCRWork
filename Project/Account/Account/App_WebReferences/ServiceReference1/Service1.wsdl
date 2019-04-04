@@ -39,6 +39,12 @@
   <wsdl:message name="IService1_EditAccount_OutputMessage">
     <wsdl:part name="parameters" element="tns:EditAccountResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_DeleteAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAccountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -59,6 +65,10 @@
     <wsdl:operation name="EditAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditAccount" message="tns:IService1_EditAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditAccountResponse" message="tns:IService1_EditAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteAccount" message="tns:IService1_DeleteAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteAccountResponse" message="tns:IService1_DeleteAccount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -101,6 +111,15 @@
     </wsdl:operation>
     <wsdl:operation name="EditAccount">
       <soap:operation soapAction="http://tempuri.org/IService1/EditAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteAccount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
