@@ -7,4 +7,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfOpen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="accountNo" type="xs:long" />
+      <xs:element minOccurs="0" name="accountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amount" type="xs:int" />
+      <xs:element minOccurs="0" name="customerId" type="xs:int" />
+      <xs:element minOccurs="0" name="dateOfEdited" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Account" nillable="true" type="tns:Account" />
 </xs:schema>

@@ -23,6 +23,13 @@ namespace WcfService1
         [OperationContract]
         DataSet GetCustomerId(int customerEnteredId);
 
+        [OperationContract]
+        bool AddAccount(string[] d);
+
+        [OperationContract]
+        bool EditAccount(Account a);
+
+
         // TODO: Add your service operations here
     }
 
@@ -49,6 +56,7 @@ namespace WcfService1
         }
     }
 
+    [DataContract]
     public class Customer
     {
         [DataMember]
@@ -75,5 +83,34 @@ namespace WcfService1
         [DataMember]
         public string amount { get; set; }
         
+    }
+
+    [DataContract]
+    public class Account
+    {
+        [DataMember]
+        public long accountNo { get; set; }
+
+        [DataMember]
+        public int customerId{ get; set; }
+
+        [DataMember]
+        public string accountType{ get; set; }
+
+        [DataMember]
+        public string DateOfOpen{ get; set; }
+
+        [DataMember]
+        public string status{ get; set; }
+
+        [DataMember]
+        public string dateOfEdited{ get; set; }
+
+        [DataMember]
+        public string ClosingDate{ get; set; }
+
+        [DataMember]
+        public int amount{ get; set; }
+
     }
 }

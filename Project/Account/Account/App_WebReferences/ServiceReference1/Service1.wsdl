@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:65252/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:65252/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1" />
       <xsd:import schemaLocation="http://localhost:65252/Service1.svc?xsd=xsd3" />
+      <xsd:import schemaLocation="http://localhost:65252/Service1.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -26,6 +27,18 @@
   <wsdl:message name="IService1_GetCustomerId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCustomerIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAccount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EditAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAccountResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -38,6 +51,14 @@
     <wsdl:operation name="GetCustomerId">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCustomerId" message="tns:IService1_GetCustomerId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCustomerIdResponse" message="tns:IService1_GetCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddAccount" message="tns:IService1_AddAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddAccountResponse" message="tns:IService1_AddAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EditAccount" message="tns:IService1_EditAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EditAccountResponse" message="tns:IService1_EditAccount_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -62,6 +83,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCustomerId">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCustomerId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAccount">
+      <soap:operation soapAction="http://tempuri.org/IService1/EditAccount" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

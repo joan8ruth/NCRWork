@@ -24,6 +24,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Account", "Account\", "{D1C
 		SlnRelativePath = "Account\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{4726B3F7-2D79-4FB6-8CBF-7E56AA71A9BB} = {4726B3F7-2D79-4FB6-8CBF-7E56AA71A9BB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{4726B3F7-2D79-4FB6-8CBF-7E56AA71A9BB}"
 EndProject

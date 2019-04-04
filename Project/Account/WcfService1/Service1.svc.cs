@@ -46,8 +46,70 @@ namespace WcfService1
 
             return ds;
             
+        }
 
+        public bool AddAccount(string[] EnteredDetails)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
+           
+            SqlCommand cmd = new SqlCommand("addDetails",con);
 
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@customerId", EnteredDetails[0]);
+            cmd.Parameters.AddWithValue("@accountType", EnteredDetails[1]);
+            cmd.Parameters.AddWithValue("@DateOfOpen", EnteredDetails[2]);
+            cmd.Parameters.AddWithValue("@status", EnteredDetails[3]);
+            cmd.Parameters.AddWithValue("@dateOfEdited", EnteredDetails[4]);
+            cmd.Parameters.AddWithValue("@ClosingDate", EnteredDetails[5]);
+            cmd.Parameters.AddWithValue("@amount", EnteredDetails[6]);
+
+            con.Open();
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if(result==0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public bool EditAccount(Account selectedAccount)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=hp-envy-4cfpq9m\sqlexpress;Initial Catalog=Bank;Integrated Security=True");
+
+            SqlCommand cmd = new SqlCommand("editedDetails", con);
+
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@accountNo", selectedAccount.accountNo);
+            cmd.Parameters.AddWithValue("@customerId", selectedAccount.customerId);
+            cmd.Parameters.AddWithValue("@accountType", selectedAccount.accountType);
+            cmd.Parameters.AddWithValue("@DateOfOpen", selectedAccount.DateOfOpen);
+            cmd.Parameters.AddWithValue("@status", selectedAccount.status);
+            cmd.Parameters.AddWithValue("@dateOfEdited", selectedAccount.dateOfEdited);
+            cmd.Parameters.AddWithValue("@ClosingDate", selectedAccount.ClosingDate);
+            cmd.Parameters.AddWithValue("@amount", selectedAccount.amount);
+
+            con.Open();
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
         }
     }
 }
